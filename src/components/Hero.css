@@ -1,7 +1,6 @@
 .overlay{
-  background: url(./images/hero.jpg);
+  background: url('../images/hero.jpg');
   height:800px;
-  color:var(--white);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;

@@ -1,0 +1,35 @@
+.header {
+  background-color: var(--black);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+}
+
+.heading {
+  width: 220px;
+  color: var(--white);
+  font-size: 24px;
+}
+.heading-container {
+  flex-grow: 2;
+}
+
+.links-container {
+  width: 350px;
+  margin-right: 20px;
+}
+
+.links {
+  list-style-type: none;
+}
+
+.links a {
+  color: var(--white);
+  padding: 0 30px;
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: var(--orange);
+}
