@@ -1,30 +1,18 @@
-*{
+* {
   margin: 0;
-  padding:0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 /* CSS Color Variables */
-:root{
-  --black:#000000;
-  --blue:#14213D;
-  --orange:#FCA311;
-  --lightgray:#e5e5e5;
-  --white:#FFFFFF;
+:root {
+  --black: #000000;
+  --blue: #14213d;
+  --orange: #fca311;
+  --lightgray: #e5e5e5;
+  --white: #ffffff;
 }
-
 
 .App {
   text-align: center;
-  
 }
-
-
-
-
-
-
-
-
-
-

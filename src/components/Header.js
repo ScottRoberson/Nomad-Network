@@ -24,9 +24,3 @@ const Header = () => {
 };
 
 export default Header;
-// <div className='header'>
-//   <div className='nav-container'>
-//     <div className='heading'></div>
-
-//   </div>
-// </div>;
