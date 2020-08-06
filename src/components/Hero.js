@@ -1,6 +1,6 @@
 import React from 'react';
 // import hero from './images/hero.jpg'
-import './Landing.css';
+import './Hero.css';
 const Hero = () => {
   return (
     <section className='landing'>

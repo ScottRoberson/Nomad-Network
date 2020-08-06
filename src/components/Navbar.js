@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from '../images/logo.jpg';
-import './Header.css';
-const Header = () => {
+import './Navbar.css';
+import { Link } from 'react-router-dom';
+const Navbar = () => {
   return (
     <header className='header'>
       <div className='logo-container'>
@@ -11,11 +12,15 @@ const Header = () => {
         <h1 className='heading'>Nomad Network</h1>
       </div>
       <nav className='links-container'>
-        <ul>
+        <ul className='link'>
           <li className='links'>
-            <a href=''>Nomads</a>
-            <a href=''>Register</a>
-            <a href=''>Login</a>
+            <Link to='/'>Home </Link>
+          </li>
+          <li className='links'>
+            <Link to='/signup'>Register </Link>
+          </li>
+          <li className='links'>
+            <Link to='/login'>Login</Link>
           </li>
         </ul>
       </nav>
@@ -23,4 +28,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

@@ -21,15 +21,20 @@
 }
 
 .links {
+  display: inline-block;
   list-style-type: none;
 }
 
 .links a {
+  list-style: none;
   color: var(--white);
-  padding: 0 30px;
+  padding: 20px;
+  transition: all 0.2s ease-in;
+  font-size: 1.2rem;
   text-decoration: none;
 }
 
 .links a:hover {
   color: var(--orange);
+  cursor: pointer;
 }
