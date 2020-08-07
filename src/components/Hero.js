@@ -1,5 +1,5 @@
 import React from 'react';
-// import hero from './images/hero.jpg'
+import { Link } from 'react-router-dom';
 import './Hero.css';
 const Hero = () => {
   return (
@@ -12,12 +12,12 @@ const Hero = () => {
             Your next adventure begins now!
           </p>
           <div className='buttons'>
-            <a href='#' className='btn btn-primary'>
-              Sign Up
-            </a>
-            <a href='#' className='btn btn'>
+            <Link className='btn btn-primary' to='/signup'>
+              Signup
+            </Link>
+            <Link className='btn btn' to='/login'>
               Login
-            </a>
+            </Link>
           </div>
         </div>
       </div>
