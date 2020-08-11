@@ -5,6 +5,7 @@
   margin-top: 5rem;
   height: 550px;
   padding: 0 2rem;
+  border-radius: 2px;
 }
 
 .signup-heading {
@@ -35,6 +36,7 @@
   padding: 0.4rem;
   margin-top: 1.5rem;
   border: 2px solid var(--lightgray);
+  border-radius: 3px;
 }
 
 .btn-primary {

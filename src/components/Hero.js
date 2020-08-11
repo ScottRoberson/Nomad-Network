@@ -12,10 +12,10 @@ const Hero = () => {
             Your next adventure begins now!
           </p>
           <div className='buttons'>
-            <Link className='btn btn-primary' to='/signup'>
+            <Link className='btn btn-signup__hero' to='/signup'>
               Signup
             </Link>
-            <Link className='btn btn' to='/login'>
+            <Link className='btn btn-login__login' to='/login'>
               Login
             </Link>
           </div>

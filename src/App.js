@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import CreateProfile from './components/CreateProfile';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path='/signup'>
             <Signup />
+          </Route>
+          <Route path='/createprofile'>
+            <CreateProfile />
           </Route>
         </Switch>
       </div>

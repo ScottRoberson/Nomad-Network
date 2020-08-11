@@ -49,7 +49,7 @@
   transition: all 0.2s ease-in;
 }
 
-.btn-primary {
+.btn-signup__hero {
   background-color: var(--orange);
 }
 
@@ -58,7 +58,7 @@
   color: var(--lightgray);
 }
 
-.btn-primary:hover {
+.btn-signup__hero:hover {
   background-color: var(--blue);
   color: var(--orange);
 }
