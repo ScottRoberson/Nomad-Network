@@ -5,26 +5,40 @@ const CreateProfile = () => {
   return (
     <div>
       <ProfileImage />
-      <h1>Create Profile Page</h1>
-      <p>Bio</p>
-      <textarea
-        placeholder='Tell us a little about yourself'
-        name='bio'></textarea>
+      <div className='create-profile-container'>
+        <h1 className='create-profile-heading'>Create Your Profile</h1>
 
-      <div className='form-group'>
-        <p>Hobbies</p>
-        <input type='hobbies' placeholder='Hobbies' />
+        <form action='submit' className='create-profile-form'>
+          <div className='form-group-profile'>
+            <p className='input-text-tags'>Bio</p>
+            <textarea
+              placeholder='Tell us a little about yourself'
+              name='bio'></textarea>
+          </div>
+          <div className='form-group-profile'>
+            <p className='input-text-tags'>Hobbies</p>
+            <textarea
+              placeholder='What are your hobbies?'
+              name='hobbies'></textarea>
+          </div>
+          <div className='form-group-profile'>
+            <p className='input-text-tags'>Home base</p>
+            <input type='home' placeholder='Your Home Base' />
+          </div>
+          <div className='form-group-profile'>
+            <p className='input-text-tags'>Ideal Travel Buddy</p>
+            <textarea
+              placeholder='Describe your ideal travel buddy'
+              name='buddy'></textarea>
+            <input
+              type='submit'
+              value='Submit'
+              className='btn btn-primary'
+              id='profile-submit-btn'
+            />
+          </div>
+        </form>
       </div>
-      <div className='form-group'>
-        <p>Home base</p>
-        <input type='home' placeholder='Home Base' />
-      </div>
-      <p>Ideal Travel Buddy</p>
-      <textarea
-        placeholder='Describe your ideal travel buddy'
-        name='buddy'></textarea>
-
-      <input type='submit' value='Submit' className='btn btn-primary' />
     </div>
   );
 };

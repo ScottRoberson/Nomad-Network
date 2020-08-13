@@ -1,0 +1,51 @@
+.create-profile-container {
+  background-color: var(--lightgray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.create-profile-heading {
+  font-size: 32px;
+  color: var(--blue);
+  margin: 3rem 0 0;
+}
+
+.create-profile-form {
+  width: 1000px;
+  padding: 10px 20px;
+}
+
+.input-text-tags {
+  color: var(--blue);
+  line-height: 1.6;
+  font-size: 1.5rem;
+  padding: 15px;
+}
+
+.create-profile-form textarea {
+  width: 100%;
+  height: 75px;
+  border: 2px solid var(--blue);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.form-group-profile input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid var(--blue);
+  border-radius: 5px;
+}
+.form-group-profile ::placeholder {
+  font-size: 18px;
+  color: var(--blue);
+}
+#profile-submit-btn {
+  width: 125px;
+}
+
+::-webkit-scrollbar {
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}

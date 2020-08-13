@@ -1,5 +1,6 @@
 .main-wrapper {
   height: 350px;
+  background-color: var(--lightgray);
 }
 .profile-image-main-container {
   width: 940px;
@@ -20,7 +21,7 @@
   width: 188px;
   position: absolute;
   bottom: -40px;
-  right: 50%;
+  right: 40%;
 }
 
 .profile-label input {
