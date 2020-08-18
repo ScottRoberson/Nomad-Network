@@ -1,0 +1,49 @@
+.profile-main {
+  background-color: var(--lightgray);
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 350px 750px 350px;
+  grid-template-rows: repeat(3, 100vh);
+}
+
+.profile-sidebar {
+  background-color: var(--blue);
+  color: var(--white);
+  width: 350px;
+}
+
+.create-post-container {
+  background-color: var(--stormShadow);
+  margin: 20px 0;
+  height: 125px;
+}
+
+.main-feed-container {
+  background-color: var(--stormShadow);
+}
+
+.main {
+  background-color: var(--lightgray);
+  width: 750px;
+  height: 100vh;
+  padding: 0 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.inner-wrapper__mainprofile {
+  width: 500px;
+}
+
+.create-post-input {
+  background-color: #f0f2f5;
+  border: none;
+  height: 40px;
+  width: 400px;
+  border-radius: 5px;
+  padding: 5px 8px;
+  margin-top: 10px;
+}
+.create-post-input::placeholder {
+  font-size: 18px;
+}

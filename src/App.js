@@ -7,6 +7,7 @@ import Signup from './components/Signup';
 import CreateProfile from './components/CreateProfile';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ProfileHome from './components/ProfileHome';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path='/createprofile'>
             <CreateProfile />
+          </Route>
+          <Route path='/profilehome'>
+            <ProfileHome />
           </Route>
         </Switch>
       </div>
