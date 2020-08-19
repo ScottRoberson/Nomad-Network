@@ -1,5 +1,6 @@
 import React from 'react';
 import Post from './Post';
+import './Mainfeed.css';
 const MainFeed = () => {
   return (
     <div className='main-feed-container'>

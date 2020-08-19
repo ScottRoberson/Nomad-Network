@@ -18,10 +18,6 @@
   height: 125px;
 }
 
-.main-feed-container {
-  background-color: var(--stormShadow);
-}
-
 .main {
   background-color: var(--lightgray);
   width: 750px;
@@ -35,15 +31,38 @@
   width: 500px;
 }
 
-.create-post-input {
+.create-post-button {
   background-color: #f0f2f5;
   border: none;
   height: 40px;
   width: 400px;
-  border-radius: 5px;
-  padding: 5px 8px;
-  margin-top: 10px;
-}
-.create-post-input::placeholder {
+  border-radius: 25px;
+  padding: 5px 15px;
   font-size: 18px;
+  text-align: left;
+}
+
+.create-post-button:hover {
+  cursor: pointer;
+}
+
+.profileImg__postContainer {
+  height: 40px;
+  width: 40px;
+}
+
+.profileImg__postContainer img {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+
+.create-post__inner-container {
+  display: flex;
+  padding: 20px;
+  justify-content: space-evenly;
+}
+
+.divider {
+  border: 1px solid #f0f2f5;
 }
