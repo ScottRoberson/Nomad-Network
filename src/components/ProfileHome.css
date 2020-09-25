@@ -1,9 +1,9 @@
 .profile-main {
   background-color: var(--lightgray);
-  height: 100vh;
+  height: 5000px;
   display: grid;
   grid-template-columns: 350px 750px 350px;
-  grid-template-rows: repeat(3, 100vh);
+  grid-template-rows: repeat(3, 100%);
 }
 
 .profile-sidebar {
@@ -15,13 +15,13 @@
 .create-post-container {
   background-color: var(--stormShadow);
   margin: 20px 0;
-  height: 125px;
+  height: 100px;
 }
 
 .main {
   background-color: var(--lightgray);
   width: 750px;
-  height: 100vh;
+  height: 100%;
   padding: 0 32px;
   display: flex;
   justify-content: center;
