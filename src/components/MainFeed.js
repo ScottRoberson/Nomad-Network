@@ -1,8 +1,8 @@
 import React from 'react';
-import PostContainer from './PostContainer';
 import './Mainfeed.css';
+import Post from './Post';
 const MainFeed = () => {
-  return <PostContainer />;
+  return <Post />;
 };
 
 export default MainFeed;

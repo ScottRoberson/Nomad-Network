@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import './ProfileImage.css';
 import profile from '../images/image-test.jpg';
-import cover from '../images/flytheW.jpg';
+import cover from '../images/wrigley-field.jpg';
 
 const ProfileImage = () => {
   return (

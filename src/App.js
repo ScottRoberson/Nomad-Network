@@ -5,7 +5,6 @@ import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import CreateProfile from './components/CreateProfile';
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ProfileHome from './components/ProfileHome';
 
