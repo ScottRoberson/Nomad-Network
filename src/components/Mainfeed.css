@@ -3,8 +3,10 @@
   height: 100%;
 }
 
-.post__container {
-  height: 100%;
+.post__main-container {
+  height: 700px;
+  background-color: var(--stormShadow);
+  border-radius: 3px;
 }
 
 .postImg__postComponent {
@@ -39,4 +41,10 @@
 .post-image {
   height: 500px;
   width: 500px;
+}
+
+.post__container {
+}
+
+.post-parent {
 }
