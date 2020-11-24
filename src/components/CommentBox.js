@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { faCommentAlt } from '@fortawesome/free-regular-svg-icons';
 import './Post.css';
+import WriteComment from './WriteComment';
+import PostComments from './PostComments';
 
 const CommentBox = () => {
   return (
@@ -35,6 +37,9 @@ const CommentBox = () => {
           </div>
         </div>
       </div>
+      {/* Write Comment & Post Comments below */}
+      <WriteComment />
+      <PostComments />
     </div>
   );
 };

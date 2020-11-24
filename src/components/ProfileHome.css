@@ -40,6 +40,7 @@
   padding: 5px 15px;
   font-size: 18px;
   text-align: left;
+  margin-left: 10px;
 }
 
 .create-post-button:hover {
@@ -59,8 +60,9 @@
 
 .create-post__inner-container {
   display: flex;
-  padding: 20px;
-  justify-content: space-evenly;
+  padding: 15px;
+  height: 100%;
+  align-items: center;
 }
 
 .divider {
