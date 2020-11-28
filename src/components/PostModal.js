@@ -12,7 +12,6 @@ import ModalAlert from './ModalAlert';
 const PostModal = ({ open, handleClose }) => {
   return (
     <div>
-      <ModalAlert />
       <Dialog open={open} aria-labelledby='form-dialog-title'>
         <IconButton
           aria-label='close'
@@ -20,6 +19,7 @@ const PostModal = ({ open, handleClose }) => {
           onClick={handleClose}>
           <CloseIcon />
         </IconButton>
+        <ModalAlert />
         <DialogTitle id='form-dialog-title'>Create Post</DialogTitle>
         <form>
           <DialogContent>

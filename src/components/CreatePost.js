@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import lucky from '../images/Lucky.jpg';
 import PostModal from './PostModal';
-
+import ModalAlert from './ModalAlert';
 const CreatePost = () => {
   const [open, setOpen] = useState(false);
 
@@ -23,6 +23,7 @@ const CreatePost = () => {
         </button>
       </div>
       <PostModal open={open} handleClose={handleClose} />
+
       <hr className='divider'></hr>
     </div>
   );
