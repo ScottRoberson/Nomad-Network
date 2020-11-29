@@ -9,23 +9,46 @@ import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import './PostModal.css';
 import ModalAlert from './ModalAlert';
 
-const PostModal = ({ open, handleClose }) => {
+const PostModal = ({
+  open,
+  openModalAlert,
+  handleDiscardPost,
+  handleModalClose,
+  handleModalAlertClose,
+  postText,
+  setPostText,
+}) => {
+  const postTextHandleChange = (e) => {
+    setPostText(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div>
       <Dialog open={open} aria-labelledby='form-dialog-title'>
         <IconButton
           aria-label='close'
-          style={{ position: 'absolute', right: '0' }}
-          onClick={handleClose}>
-          <CloseIcon />
+          style={{ position: 'absolute', right: '0' }}>
+          <CloseIcon onClick={handleModalClose} />
+          <ModalAlert
+            openModalAlert={openModalAlert}
+            handleModalAlertClose={handleModalAlertClose}
+            handleDiscardPost={handleDiscardPost}
+            handleModalClose={handleModalClose}
+          />
         </IconButton>
-        <ModalAlert />
+
         <DialogTitle id='form-dialog-title'>Create Post</DialogTitle>
-        <form>
+        <form onSubmit={handleSubmit}>
           <DialogContent>
             <textarea
               className='post-textarea'
               placeholder='What is on your mind?'
+              value={postText}
+              onChange={postTextHandleChange}
             />
           </DialogContent>
           <div className='modal-upload-container'>
@@ -34,10 +57,13 @@ const PostModal = ({ open, handleClose }) => {
               <CameraAltIcon style={{ fontSize: '32px' }} />
             </label>
           </div>
-
           <div className='output'></div>
           <DialogActions>
-            <button className='post-modal-btn'> Post</button>
+            <button
+              className={postText ? 'post-modal-btn' : 'disabled'}
+              disabled={!postText}>
+              Post
+            </button>
           </DialogActions>
         </form>
       </Dialog>
