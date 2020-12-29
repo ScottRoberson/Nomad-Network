@@ -11,6 +11,8 @@ import ModalAlert from './ModalAlert';
 
 const PostModal = ({
   open,
+  setOpen,
+  setOpenModalAlert,
   openModalAlert,
   handleDiscardPost,
   handleModalClose,
@@ -26,12 +28,25 @@ const PostModal = ({
 
   const imageHandleChange = (e) => {
     setPostImage(e.target.files[0]);
-    console.log(e.target.files[0]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(postText, postImage);
+    const data = new FormData();
+    data.append('postText', postText);
+    data.append('postImage', postImage);
+
+    fetch('/api/posts', {
+      method: 'POST',
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+    setPostText('');
+    setPostImage(null);
+    setOpenModalAlert(false);
+    setOpen(false);
   };
 
   return (

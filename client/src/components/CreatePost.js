@@ -44,12 +44,14 @@ const CreatePost = () => {
       </div>
       <PostModal
         open={open}
+        setOpen={setOpen}
         postText={postText}
         setPostText={setPostText}
         openModalAlert={openModalAlert}
         handleModalClose={handleModalClose}
         handleDiscardPost={handleDiscardPost}
         handleModalAlertClose={handleModalAlertClose}
+        setOpenModalAlert={setOpenModalAlert}
         postImage={postImage}
         setPostImage={setPostImage}
       />
