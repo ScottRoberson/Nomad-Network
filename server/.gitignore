@@ -1,6 +1,6 @@
-node_modules/uploads/postImages/2020-12-20T02:43:17.320ZC1DF214F-535E-4B74-9BD3-D0BBE9F94622.jpeg uploads/postImages/2020-12-20T03_00_10.324ZC1CB79FC-8B6B-4B2D-B3AF-B9094579416B.jpeg uploads/postImages/2020-12-20T03_03_28.202ZC0D1C77C-1863-46E3-B39E-E71A77999B29.jpeg
+
 .env
 node_modules/
-uploads/
+upload/
 ../.vscode/
 ../.vscode/settings.json
