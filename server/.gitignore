@@ -1,6 +1,10 @@
 
 .env
 node_modules/
+<<<<<<< HEAD
 upload/
+=======
+upload/postImage/
+>>>>>>> c9472c698375cc48a344af980a15f44ae78808de
 ../.vscode/
 ../.vscode/settings.json

@@ -7,6 +7,7 @@ const CreatePost = () => {
   const [open, setOpen] = useState(false);
   const [openModalAlert, setOpenModalAlert] = useState(false);
   const [postText, setPostText] = useState('');
+  const [postImage, setPostImage] = useState(null);
   const handleModalAlertOpen = () => {
     setOpenModalAlert(true);
   };
@@ -43,12 +44,16 @@ const CreatePost = () => {
       </div>
       <PostModal
         open={open}
+        setOpen={setOpen}
         postText={postText}
         setPostText={setPostText}
         openModalAlert={openModalAlert}
         handleModalClose={handleModalClose}
         handleDiscardPost={handleDiscardPost}
         handleModalAlertClose={handleModalAlertClose}
+        setOpenModalAlert={setOpenModalAlert}
+        postImage={postImage}
+        setPostImage={setPostImage}
       />
 
       <hr className='divider'></hr>
