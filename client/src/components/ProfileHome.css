@@ -1,6 +1,5 @@
 .profile-main {
   background-color: var(--lightgray);
-  height: 5000px;
   display: grid;
   grid-template-columns: 350px 750px 350px;
   grid-template-rows: repeat(3, 100%);

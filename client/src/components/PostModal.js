@@ -11,19 +11,42 @@ import ModalAlert from './ModalAlert';
 
 const PostModal = ({
   open,
+  setOpen,
+  setOpenModalAlert,
   openModalAlert,
   handleDiscardPost,
   handleModalClose,
   handleModalAlertClose,
   postText,
   setPostText,
+  postImage,
+  setPostImage,
 }) => {
   const postTextHandleChange = (e) => {
     setPostText(e.target.value);
   };
 
+  const imageHandleChange = (e) => {
+    setPostImage(e.target.files[0]);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const data = new FormData();
+    data.append('postText', postText);
+    data.append('postImage', postImage);
+
+    fetch('/api/posts', {
+      method: 'POST',
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+    setPostText('');
+    setPostImage(null);
+    setOpenModalAlert(false);
+    setOpen(false);
   };
 
   return (
@@ -52,16 +75,22 @@ const PostModal = ({
             />
           </DialogContent>
           <div className='modal-upload-container'>
-            <input type='file' id='file' className='inputfile' />
-            <label for='file'>
+            <input
+              type='file'
+              name='postImage'
+              id='postImage'
+              className='inputfile'
+              onChange={imageHandleChange}
+            />
+            <label for='postImage'>
               <CameraAltIcon style={{ fontSize: '32px' }} />
             </label>
           </div>
           <div className='output'></div>
           <DialogActions>
             <button
-              className={postText ? 'post-modal-btn' : 'disabled'}
-              disabled={!postText}>
+              className={postText || postImage ? 'post-modal-btn' : 'disabled'}
+              disabled={!postText || !postImage}>
               Post
             </button>
           </DialogActions>

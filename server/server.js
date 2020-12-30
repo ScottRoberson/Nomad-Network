@@ -22,7 +22,8 @@ db.once('open', () => console.log('Connected to DB'));
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(express.static(__dirname));
+app.use(express.static(__dirname + '/upload/postImage'));
+// console.log(__dirname + './uploads/postImages');
 
 //Define Routes
 app.use('/api/posts', require('./routes/api/posts'));
