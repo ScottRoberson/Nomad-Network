@@ -10,7 +10,7 @@ const post = (state = initialState, action) => {
     case GET_POST:
       return {
         ...state,
-        post: action.payload,
+        posts: action.payload,
         loading: false,
       };
     case POST_LOADING:

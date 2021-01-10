@@ -1,16 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
+import { connect } from 'react-redux';
 import './Mainfeed.css';
+import { getPosts } from '../redux/actions/postActions';
 import Post from './Post';
-const MainFeed = () => {
-  const [posts, setPosts] = useState([]);
+class MainFeed extends Component {
+  componentDidMount() {
+    this.props.getPostItems();
+  }
+  render() {
+    return <Post posts={this.props.post} />;
+  }
+}
 
-  useEffect(() => {
-    fetch('/api/posts')
-      .then((response) => response.json())
-      .then((data) => setPosts(data));
-  }, []);
-
-  return <Post posts={posts} />;
+const mapStateToProps = (state) => {
+  return {
+    post: state.post.posts,
+  };
 };
 
-export default MainFeed;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getPostItems: () => dispatch(getPosts()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainFeed);
