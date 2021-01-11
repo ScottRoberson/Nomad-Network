@@ -17,6 +17,7 @@ const PostModal = ({
   handleDiscardPost,
   handleModalClose,
   handleModalAlertClose,
+  //loacal state
   postText,
   setPostText,
   postImage,

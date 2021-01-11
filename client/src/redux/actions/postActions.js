@@ -1,4 +1,5 @@
-import { GET_POST, POST_LOADING } from './types';
+import { GET_POST, POST_LOADING, ADD_POST } from './types';
+import axios from 'axios';
 
 export const getPosts = () => (dispatch) => {
   dispatch(setPostLoading());
@@ -17,4 +18,18 @@ export const setPostLoading = () => {
   return {
     type: POST_LOADING,
   };
+};
+
+export const addPost = (post) => (dispatch) => {
+  fetch('/api/posts', {
+    method: 'POST',
+    body: post,
+  })
+    .then((res) => res.json())
+    .then((data) =>
+      dispatch({
+        type: ADD_POST,
+        payload: data,
+      })
+    );
 };
