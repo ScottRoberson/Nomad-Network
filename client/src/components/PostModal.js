@@ -36,7 +36,7 @@ const PostModal = ({
     const data = new FormData();
     data.append('postText', postText);
     data.append('postImage', postImage);
-
+    console.log('clicked,PM');
     fetch('/api/posts', {
       method: 'POST',
       body: data,
@@ -73,6 +73,7 @@ const PostModal = ({
               placeholder='What is on your mind?'
               value={postText}
               onChange={postTextHandleChange}
+              required
             />
           </DialogContent>
           <div className='modal-upload-container'>
@@ -91,7 +92,9 @@ const PostModal = ({
           <DialogActions>
             <button
               className={postText || postImage ? 'post-modal-btn' : 'disabled'}
-              disabled={!postText || !postImage}>
+              //disabled={!postText || !postImage}>
+            >
+              {' '}
               Post
             </button>
           </DialogActions>

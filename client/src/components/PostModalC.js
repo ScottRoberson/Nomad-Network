@@ -34,11 +34,23 @@ class PostModalC extends Component {
     const data = new FormData();
     data.append('postText', this.state.postText);
     data.append('postImage', this.state.postImage);
-
-    this.props.addPostItem(data);
+    console.log('clicked');
+    this.props.addPost(data);
+    // setOpenModalAlert(false);
+    // setOpen(false);
   };
 
   render() {
+    const {
+      open,
+      setOpen,
+      setOpenModalAlert,
+      openModalAlert,
+      handleDiscardPost,
+      handleModalClose,
+      handleModalAlertClose,
+    } = this.props;
+
     return (
       <div>
         <Dialog open={open} aria-labelledby='form-dialog-title'>
@@ -80,9 +92,12 @@ class PostModalC extends Component {
             <DialogActions>
               <button
                 className={
-                  postText || postImage ? 'post-modal-btn' : 'disabled'
+                  this.state.postText || this.state.postImage
+                    ? 'post-modal-btn'
+                    : 'disabled'
                 }
-                disabled={!postText || !postImage}>
+                //disabled={!this.state.postText}>
+              >
                 Post
               </button>
             </DialogActions>
@@ -93,8 +108,8 @@ class PostModalC extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  addPostItem: (post) => dispatch(addPost());
-};
+// const mapDispatchToProps = (dispatch) => {
+//   addPostItem: (post) => dispatch(addPost());
+// };
 
-export default connect(null, mapDispatchToProps)(PostModalC);
+export default connect(null, { addPost })(PostModalC);
