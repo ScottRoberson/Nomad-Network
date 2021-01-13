@@ -1,6 +1,10 @@
 .post-parent {
-  background-color: var(--stormShadow);
   padding: 10px 0;
+}
+
+.post-wrapper {
+  margin-bottom: 20px;
+  background-color: var(--stormShadow);
 }
 
 .post {
@@ -13,13 +17,13 @@
   margin-bottom: 15px;
 }
 
+.post-image-container img[src='null'] {
+  display: none;
+}
+
 .post-image {
   height: 350px;
   width: 100%;
-}
-
-.post-image-none {
-  display: none;
 }
 
 /* Added Below */
