@@ -6,13 +6,13 @@ import CommentBox from './CommentBox';
 function Post({ posts }) {
   const postslist = posts.map((post) => {
     return (
-      <div>
+      <div className='post-wrapper'>
         <FeedProfile />
         <div className='post__container'>
           <div className='post'>
             <p>{post.postText}</p>
-            <div className={post.postImage ? 'post-image' : 'post-image-none'}>
-              <img src={post.postImage} alt='' />
+            <div className='post-image-container'>
+              <img className='post-image' src={post.postImage} alt='' />
             </div>
           </div>
           <CommentBox />
