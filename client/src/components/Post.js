@@ -11,7 +11,9 @@ function Post({ posts }) {
         <div className='post__container'>
           <div className='post'>
             <p>{post.postText}</p>
-            <img src={post.postImage} alt='' className='post-image' />
+            <div className={post.postImage ? 'post-image' : 'post-image-none'}>
+              <img src={post.postImage} alt='' />
+            </div>
           </div>
           <CommentBox />
         </div>
