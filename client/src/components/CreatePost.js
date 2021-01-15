@@ -7,32 +7,9 @@ import PostModalC from './PostModalC';
 const CreatePost = () => {
   const [open, setOpen] = useState(false);
   const [openModalAlert, setOpenModalAlert] = useState(false);
-  const [postText, setPostText] = useState('');
-  const [postImage, setPostImage] = useState(null);
-  const handleModalAlertOpen = () => {
-    setOpenModalAlert(true);
-  };
-
-  const handleModalAlertClose = () => {
-    setOpenModalAlert(false);
-  };
 
   const handleModalOpen = () => {
     setOpen(true);
-  };
-
-  const handleModalClose = () => {
-    if (postText) {
-      handleModalAlertOpen();
-    } else {
-      setOpen(false);
-    }
-  };
-
-  const handleDiscardPost = () => {
-    setOpen(false);
-    setPostText('');
-    handleModalAlertClose();
   };
 
   return (
@@ -47,9 +24,6 @@ const CreatePost = () => {
         open={open}
         setOpen={setOpen}
         openModalAlert={openModalAlert}
-        handleModalClose={handleModalClose}
-        handleDiscardPost={handleDiscardPost}
-        handleModalAlertClose={handleModalAlertClose}
         setOpenModalAlert={setOpenModalAlert}
       />
 

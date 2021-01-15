@@ -29,40 +29,51 @@ class PostModalC extends Component {
     });
   };
 
+  handleModalAlertOpen = () => {
+    this.props.setOpenModalAlert(true);
+  };
+
+  handleModalAlertClose = () => {
+    this.props.setOpenModalAlert(false);
+  };
+
+  handleModalClose = () => {
+    if (this.state.postText) {
+      this.handleModalAlertOpen();
+    } else {
+      this.props.setOpen(false);
+    }
+  };
+
+  handleDiscardPost = () => {
+    this.props.setOpen(false);
+    this.setState({ postText: '' });
+    this.handleModalAlertClose();
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData();
     data.append('postText', this.state.postText);
     data.append('postImage', this.state.postImage);
-    console.log('clicked');
     this.props.addPost(data);
-    // setOpenModalAlert(false);
-    // setOpen(false);
+    this.props.setOpen(false);
+    this.setState({ postText: '', postImage: null });
   };
 
   render() {
-    const {
-      open,
-      setOpen,
-      setOpenModalAlert,
-      openModalAlert,
-      handleDiscardPost,
-      handleModalClose,
-      handleModalAlertClose,
-    } = this.props;
-
     return (
       <div>
-        <Dialog open={open} aria-labelledby='form-dialog-title'>
+        <Dialog open={this.props.open} aria-labelledby='form-dialog-title'>
           <IconButton
             aria-label='close'
             style={{ position: 'absolute', right: '0' }}>
-            <CloseIcon onClick={handleModalClose} />
+            <CloseIcon onClick={this.handleModalClose} />
             <ModalAlert
-              openModalAlert={openModalAlert}
-              handleModalAlertClose={handleModalAlertClose}
-              handleDiscardPost={handleDiscardPost}
-              handleModalClose={handleModalClose}
+              openModalAlert={this.props.openModalAlert}
+              handleModalAlertClose={this.handleModalAlertClose}
+              handleDiscardPost={this.handleDiscardPost}
+              handleModalClose={this.handleModalClose}
             />
           </IconButton>
 
@@ -95,9 +106,7 @@ class PostModalC extends Component {
                   this.state.postText || this.state.postImage
                     ? 'post-modal-btn'
                     : 'disabled'
-                }
-                //disabled={!this.state.postText}>
-              >
+                }>
                 Post
               </button>
             </DialogActions>
@@ -107,9 +116,5 @@ class PostModalC extends Component {
     );
   }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//   addPostItem: (post) => dispatch(addPost());
-// };
 
 export default connect(null, { addPost })(PostModalC);
