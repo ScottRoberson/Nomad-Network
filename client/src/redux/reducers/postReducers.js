@@ -1,4 +1,9 @@
-import { GET_POST, POST_LOADING, ADD_POST } from '../actions/types';
+import {
+  GET_POST,
+  POST_LOADING,
+  ADD_POST,
+  DELETE_POST,
+} from '../actions/types';
 
 const initialState = {
   posts: [],
@@ -21,6 +26,10 @@ const post = (state = initialState, action) => {
     case ADD_POST:
       return {
         posts: [action.payload, ...state.posts],
+      };
+    case DELETE_POST:
+      return {
+        posts: state.posts.filter((post) => post._id !== action.payload),
       };
 
     default:

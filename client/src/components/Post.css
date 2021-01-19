@@ -5,6 +5,7 @@
 .post-wrapper {
   margin-bottom: 20px;
   background-color: var(--stormShadow);
+  position: relative;
 }
 
 .post {
