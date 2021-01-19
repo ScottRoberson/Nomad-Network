@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import lucky from '../images/Lucky.jpg';
 import PostModal from './PostModal';
-import PostModalC from './PostModalC';
 
 const CreatePost = () => {
   const [open, setOpen] = useState(false);
@@ -20,7 +19,7 @@ const CreatePost = () => {
           Where in the world are you today?
         </button>
       </div>
-      <PostModalC
+      <PostModal
         open={open}
         setOpen={setOpen}
         openModalAlert={openModalAlert}

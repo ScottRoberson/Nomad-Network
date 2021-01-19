@@ -1,4 +1,4 @@
-import { GET_POST, POST_LOADING, ADD_POST } from './types';
+import { GET_POST, POST_LOADING, ADD_POST, DELETE_POST } from './types';
 import axios from 'axios';
 
 export const getPosts = () => (dispatch) => {
@@ -32,4 +32,13 @@ export const addPost = (post) => (dispatch) => {
         payload: data,
       })
     );
+};
+
+export const deletePost = (id) => (dispatch) => {
+  axios.delete(`api/posts/${id}`).then((res) =>
+    dispatch({
+      type: DELETE_POST,
+      payload: id,
+    })
+  );
 };
