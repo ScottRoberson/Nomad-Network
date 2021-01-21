@@ -3,11 +3,14 @@ import {
   POST_LOADING,
   ADD_POST,
   DELETE_POST,
+  OPEN_EDIT_MODAL,
 } from '../actions/types';
 
 const initialState = {
   posts: [],
   loading: false,
+  openEditForm: false,
+  postToEdit: {},
 };
 
 const post = (state = initialState, action) => {
@@ -30,6 +33,12 @@ const post = (state = initialState, action) => {
     case DELETE_POST:
       return {
         posts: state.posts.filter((post) => post._id !== action.payload),
+      };
+    case OPEN_EDIT_MODAL:
+      return {
+        ...state,
+        openEditForm: true,
+        postToEdit: action.payload,
       };
 
     default:

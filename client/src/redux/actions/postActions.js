@@ -1,4 +1,10 @@
-import { GET_POST, POST_LOADING, ADD_POST, DELETE_POST } from './types';
+import {
+  GET_POST,
+  POST_LOADING,
+  ADD_POST,
+  DELETE_POST,
+  OPEN_EDIT_MODAL,
+} from './types';
 import axios from 'axios';
 
 export const getPosts = () => (dispatch) => {
@@ -41,4 +47,11 @@ export const deletePost = (id) => (dispatch) => {
       payload: id,
     })
   );
+};
+
+export const openEditModal = (post) => {
+  return {
+    type: OPEN_EDIT_MODAL,
+    payload: post,
+  };
 };
