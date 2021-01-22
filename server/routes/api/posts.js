@@ -66,4 +66,25 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+router.patch('/:id', upload.single('postImage'), async (req, res) => {
+  const id = req.params.id;
+  const postText = req.body.postText;
+
+  const updates = {
+    postText,
+  };
+  if (req.file !== undefined) {
+    const postImage = req.file.filename;
+    updates.postImage = postImage;
+  }
+  try {
+    const post = await Post.findByIdAndUpdate(id, updates, {
+      new: true,
+    });
+    res.status(201).json(post);
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+});
+
 module.exports = router;
