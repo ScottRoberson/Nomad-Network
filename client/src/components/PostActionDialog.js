@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector, connect } from 'react-redux';
-import { openEditModal } from '../redux/actions/postActions';
+import { useDispatch } from 'react-redux';
+import { openEditModal, deletePost } from '../redux/actions/postActions';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
@@ -48,8 +48,8 @@ const PostActionDialog = (props) => {
   };
 
   const handleDelete = (id) => {
-    // dispatch(deletePost(id));
-    // handleClose();
+    dispatch(deletePost(id));
+    handleClose();
     console.log('deleted');
   };
 
@@ -79,7 +79,7 @@ const PostActionDialog = (props) => {
               onClick={() => handleEdit(props.id, props.post)}>
               <Avatar className={classes.avatar}>
                 <EditIcon />
-                <EditPostForm open={openEdit} />
+                <EditPostForm open={openEdit} setOpen={setOpen} />
               </Avatar>
               <ListItemText primary='Edit' />
             </ListItem>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -9,8 +9,21 @@ import CloseIcon from '@material-ui/icons/Close';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import ModalAlert from './ModalAlert';
 
-const EditPostForm = ({ open }) => {
+const EditPostForm = ({ open, setOpen }) => {
+  const [updatedText, setUpdatedText] = useState('');
+  const [updatedImage, setUpdatedImage] = useState(null);
+
   const editPost = useSelector((state) => state.post.postToEdit);
+
+  const handleUpdateText = (e) => {
+    setUpdatedText(e.target.value);
+  };
+  const handleUpdateImage = (e) => {
+    setUpdatedImage(e.target.files[0]);
+  };
+  const handleEditClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div>
@@ -18,7 +31,7 @@ const EditPostForm = ({ open }) => {
         <IconButton
           aria-label='close'
           style={{ position: 'absolute', right: '0' }}>
-          <CloseIcon />
+          <CloseIcon onClick={handleEditClose} />
         </IconButton>
 
         <DialogTitle id='form-dialog-title'>Edit Post</DialogTitle>
@@ -27,6 +40,7 @@ const EditPostForm = ({ open }) => {
             <textarea
               className='post-textarea'
               defaultValue={editPost.postText}
+              onChange={handleUpdateText}
             />
           </DialogContent>
           <div className='modal-upload-container'>
@@ -35,6 +49,7 @@ const EditPostForm = ({ open }) => {
               name='postImage'
               id='postImage'
               className='inputfile'
+              onChange={handleUpdateImage}
             />
             <label for='postImage'>
               <CameraAltIcon style={{ fontSize: '32px' }} />
@@ -49,9 +64,5 @@ const EditPostForm = ({ open }) => {
     </div>
   );
 };
-
-// const mapStateToProps = (state) => {
-//   editPost: state.post.postToEdit;
-// };
 
 export default EditPostForm;

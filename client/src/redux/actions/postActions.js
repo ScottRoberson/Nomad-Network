@@ -41,13 +41,19 @@ export const addPost = (post) => (dispatch) => {
 };
 
 export const deletePost = (id) => (dispatch) => {
-  axios.delete(`api/posts/${id}`).then((res) =>
-    dispatch({
-      type: DELETE_POST,
-      payload: id,
-    })
-  );
+  fetch(`api/posts/${id}`, {
+    method: 'DELETE',
+  })
+    .then((res) => res.json())
+    .then((id) =>
+      dispatch({
+        type: DELETE_POST,
+        payload: id,
+      })
+    );
 };
+
+export const updatePost = (post) => (dispatch) => {};
 
 export const openEditModal = (post) => {
   return {
