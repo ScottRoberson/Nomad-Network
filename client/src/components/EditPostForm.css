@@ -1,0 +1,10 @@
+.edit-image {
+  height: 100%;
+  width: 100%;
+}
+.edit-image-container {
+  display: flex;
+  justify-content: center;
+  height: 250px;
+  width: 500px;
+}

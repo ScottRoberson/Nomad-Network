@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -7,12 +8,19 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
+import './EditPostForm.css';
 import ModalAlert from './ModalAlert';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    background: 'linear-gradient(45deg, #FE6B8B 30%)',
+  },
+}));
 
 const EditPostForm = ({ open, setOpen }) => {
   const [updatedText, setUpdatedText] = useState('');
   const [updatedImage, setUpdatedImage] = useState(null);
-
+  const classes = useStyles();
   const editPost = useSelector((state) => state.post.postToEdit);
 
   const handleUpdateText = (e) => {
@@ -42,6 +50,9 @@ const EditPostForm = ({ open, setOpen }) => {
               defaultValue={editPost.postText}
               onChange={handleUpdateText}
             />
+            <div className='edit-image-container'>
+              <img src={editPost.postImage} className='edit-image' />
+            </div>
           </DialogContent>
           <div className='modal-upload-container'>
             <input
