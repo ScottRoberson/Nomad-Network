@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deletePost } from '../redux/actions/postActions';
+import { openEditModal, deletePost } from '../redux/actions/postActions';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
@@ -13,6 +13,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { blue } from '@material-ui/core/colors';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import './PostDialogBox.css';
+import EditPostForm from './EditPostForm';
 
 const useStyles = makeStyles({
   avatar: {
@@ -33,10 +34,12 @@ const useStyles = makeStyles({
   },
 });
 
-const PostActionDialog = ({ id, post }) => {
+const PostActionDialog = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
   const dispatch = useDispatch();
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -47,6 +50,12 @@ const PostActionDialog = ({ id, post }) => {
   const handleDelete = (id) => {
     dispatch(deletePost(id));
     handleClose();
+    console.log('deleted');
+  };
+
+  const handleEdit = (id, post) => {
+    dispatch(openEditModal(post));
+    setOpenEdit(true);
   };
 
   return (
@@ -59,15 +68,18 @@ const PostActionDialog = ({ id, post }) => {
           <List className={classes.list}>
             <ListItem
               className={classes.listItem}
-              onClick={() => handleDelete(id)}>
+              onClick={() => handleDelete(props.id)}>
               <Avatar className={classes.avatar}>
                 <DeleteIcon />
               </Avatar>
               <ListItemText primary='Delete' />
             </ListItem>
-            <ListItem className={classes.listItem}>
+            <ListItem
+              className={classes.listItem}
+              onClick={() => handleEdit(props.id, props.post)}>
               <Avatar className={classes.avatar}>
                 <EditIcon />
+                <EditPostForm id={props.id} open={openEdit} setOpen={setOpen} />
               </Avatar>
               <ListItemText primary='Edit' />
             </ListItem>

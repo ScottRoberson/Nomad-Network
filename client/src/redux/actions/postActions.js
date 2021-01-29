@@ -1,4 +1,11 @@
-import { GET_POST, POST_LOADING, ADD_POST, DELETE_POST } from './types';
+import {
+  GET_POST,
+  POST_LOADING,
+  ADD_POST,
+  DELETE_POST,
+  OPEN_EDIT_MODAL,
+  UPDATE_POST,
+} from './types';
 import axios from 'axios';
 
 export const getPosts = () => (dispatch) => {
@@ -35,10 +42,35 @@ export const addPost = (post) => (dispatch) => {
 };
 
 export const deletePost = (id) => (dispatch) => {
-  axios.delete(`api/posts/${id}`).then((res) =>
-    dispatch({
-      type: DELETE_POST,
-      payload: id,
-    })
-  );
+  fetch(`api/posts/${id}`, {
+    method: 'DELETE',
+  })
+    .then((res) => res.json())
+    .then((id) =>
+      dispatch({
+        type: DELETE_POST,
+        payload: id,
+      })
+    );
+};
+
+export const updatePost = (id, updatedPost) => (dispatch) => {
+  fetch(`api/posts/${id}`, {
+    method: 'PATCH',
+    body: updatedPost,
+  })
+    .then((res) => res.json())
+    .then((data) =>
+      dispatch({
+        type: UPDATE_POST,
+        payload: data,
+      })
+    );
+};
+
+export const openEditModal = (post) => {
+  return {
+    type: OPEN_EDIT_MODAL,
+    payload: post,
+  };
 };

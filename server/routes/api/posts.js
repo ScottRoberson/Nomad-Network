@@ -66,4 +66,35 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// @route    PATCH api/posts/:id
+// @desc     Update a post
+// @access   TBD
+
+router.patch('/:id', upload.single('postImage'), async (req, res) => {
+  const { id } = req.params;
+  const { postText } = req.body;
+  const updates = {};
+  if (postText) {
+    updates.postText = postText;
+  }
+  if (req.file) {
+    const postImage = req.file.filename;
+    updates.postImage = postImage;
+  }
+  try {
+    const post = await Post.findByIdAndUpdate(id, updates, {
+      new: true,
+    });
+    if (post === null) {
+      return res.status(404).json({ message: 'Post not found' });
+    } else if (Object.keys(updates).length === 0) {
+      return res.status(404).json({ message: 'Please update the post' });
+    } else {
+      res.status(201).json(post);
+    }
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+});
+
 module.exports = router;
