@@ -4,6 +4,7 @@ import {
   ADD_POST,
   DELETE_POST,
   OPEN_EDIT_MODAL,
+  UPDATE_POST,
 } from './types';
 import axios from 'axios';
 
@@ -53,7 +54,19 @@ export const deletePost = (id) => (dispatch) => {
     );
 };
 
-export const updatePost = (post) => (dispatch) => {};
+export const updatePost = (id, updatedPost) => (dispatch) => {
+  fetch(`api/posts/${id}`, {
+    method: 'PATCH',
+    body: updatedPost,
+  })
+    .then((res) => res.json())
+    .then((data) =>
+      dispatch({
+        type: UPDATE_POST,
+        payload: data,
+      })
+    );
+};
 
 export const openEditModal = (post) => {
   return {

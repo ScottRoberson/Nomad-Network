@@ -3,6 +3,7 @@ import {
   POST_LOADING,
   ADD_POST,
   DELETE_POST,
+  UPDATE_POST,
   OPEN_EDIT_MODAL,
 } from '../actions/types';
 
@@ -33,6 +34,19 @@ const post = (state = initialState, action) => {
     case DELETE_POST:
       return {
         posts: state.posts.filter((post) => post._id !== action.payload),
+      };
+    case UPDATE_POST:
+      return {
+        ...state,
+        posts: state.posts.map((post) => {
+          if (post._id !== action.payload.id) {
+            return post;
+          } else {
+            return {
+              posts: [action.payload, ...state.posts],
+            };
+          }
+        }),
       };
     case OPEN_EDIT_MODAL:
       return {

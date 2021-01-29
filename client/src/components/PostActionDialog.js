@@ -79,7 +79,7 @@ const PostActionDialog = (props) => {
               onClick={() => handleEdit(props.id, props.post)}>
               <Avatar className={classes.avatar}>
                 <EditIcon />
-                <EditPostForm open={openEdit} setOpen={setOpen} />
+                <EditPostForm id={props.id} open={openEdit} setOpen={setOpen} />
               </Avatar>
               <ListItemText primary='Edit' />
             </ListItem>

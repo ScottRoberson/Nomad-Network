@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { updatePost } from '../redux/actions/postActions';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -11,26 +11,42 @@ import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import './EditPostForm.css';
 import ModalAlert from './ModalAlert';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%)',
-  },
-}));
-
-const EditPostForm = ({ open, setOpen }) => {
+const EditPostForm = ({ open, setOpen, id }) => {
   const [updatedText, setUpdatedText] = useState('');
-  const [updatedImage, setUpdatedImage] = useState(null);
-  const classes = useStyles();
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
   const editPost = useSelector((state) => state.post.postToEdit);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
 
   const handleUpdateText = (e) => {
     setUpdatedText(e.target.value);
   };
   const handleUpdateImage = (e) => {
-    setUpdatedImage(e.target.files[0]);
+    setSelectedFile(e.target.files[0]);
   };
   const handleEditClose = () => {
     setOpen(false);
+  };
+
+  const handleUpdatePost = (e, id) => {
+    const data = new FormData();
+    data.append('postText', updatedText);
+    data.append('postImage', selectedFile);
+    e.preventDefault();
+
+    dispatch(updatePost(id, data));
+    console.log(selectedFile, id);
   };
 
   return (
@@ -43,7 +59,7 @@ const EditPostForm = ({ open, setOpen }) => {
         </IconButton>
 
         <DialogTitle id='form-dialog-title'>Edit Post</DialogTitle>
-        <form>
+        <form onSubmit={(e) => handleUpdatePost(e, id)}>
           <DialogContent>
             <textarea
               className='post-textarea'
@@ -51,7 +67,7 @@ const EditPostForm = ({ open, setOpen }) => {
               onChange={handleUpdateText}
             />
             <div className='edit-image-container'>
-              <img src={editPost.postImage} className='edit-image' />
+              {selectedFile && <img src={preview} className='edit-image' />}
             </div>
           </DialogContent>
           <div className='modal-upload-container'>
