@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updatePost } from '../redux/actions/postActions';
+import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -11,12 +12,31 @@ import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import './EditPostForm.css';
 import ModalAlert from './ModalAlert';
 
+const useStyles = makeStyles({
+  closeButton: {
+    position: 'absolute',
+    right: '-23px',
+    top: '-20px',
+    backgroundColor: '#e5e5e5',
+    '&:hover': {
+      backgroundColor: '#ffffff',
+      color: '#000000',
+    },
+  },
+  closeButtonHide: {
+    display: 'none',
+  },
+});
+
 const EditPostForm = ({ open, setOpen, id }) => {
   const [updatedText, setUpdatedText] = useState('');
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
   const editPost = useSelector((state) => state.post.postToEdit);
   const dispatch = useDispatch();
+  const [showPostImage, setShowPostImage] = useState(true);
+  const imageContainer = useRef(null);
+  const classes = useStyles();
 
   useEffect(() => {
     if (!selectedFile) {
@@ -29,11 +49,14 @@ const EditPostForm = ({ open, setOpen, id }) => {
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
 
+  useEffect(() => {});
+
   const handleUpdateText = (e) => {
     setUpdatedText(e.target.value);
   };
   const handleUpdateImage = (e) => {
     setSelectedFile(e.target.files[0]);
+    imageContainer.current.className = 'edit-image-container';
   };
   const handleEditClose = () => {
     setOpen(false);
@@ -46,7 +69,10 @@ const EditPostForm = ({ open, setOpen, id }) => {
     e.preventDefault();
 
     dispatch(updatePost(id, data));
-    console.log(selectedFile, id);
+  };
+
+  const removeImage = () => {
+    return (imageContainer.current.className = 'hide');
   };
 
   return (
@@ -66,9 +92,22 @@ const EditPostForm = ({ open, setOpen, id }) => {
               defaultValue={editPost.postText}
               onChange={handleUpdateText}
             />
-            <div className='edit-image-container'>
-              {selectedFile && <img src={preview} className='edit-image' />}
-            </div>
+            {editPost.postImage || selectedFile ? (
+              <div className='edit-image-container' ref={imageContainer}>
+                <div className='plop'>
+                  <IconButton
+                    aria-label='close'
+                    className={classes.closeButton}>
+                    <CloseIcon onClick={removeImage} />
+                  </IconButton>
+                  <img
+                    src={selectedFile ? preview : editPost.postImage}
+                    className='edit-image'
+                    onError={() => (imageContainer.current.className = 'hide')}
+                  />
+                </div>
+              </div>
+            ) : null}
           </DialogContent>
           <div className='modal-upload-container'>
             <input
