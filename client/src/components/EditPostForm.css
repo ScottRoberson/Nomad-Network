@@ -4,7 +4,22 @@
 }
 .edit-image-container {
   display: flex;
+  position: relative;
   justify-content: center;
   height: 250px;
   width: 500px;
+}
+
+.edit-image-container img[src='null'] {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
+/* .image-home {
+  position: relative;
+} */
+
+.hide {
+  display: none;
 }
