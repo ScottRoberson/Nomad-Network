@@ -97,4 +97,55 @@ router.patch('/:id', upload.single('postImage'), async (req, res) => {
   }
 });
 
+// @route    POST api/posts/comment/:id
+// @desc     Comment on a post
+// @access   TBD
+router.post('/comment/:id', async (req, res) => {
+  const { id } = req.params;
+  const { text } = req.body;
+  try {
+    const post = await Post.findById(id);
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+    const newComment = {
+      text: text,
+    };
+    post.comments.unshift(newComment);
+
+    await post.save();
+
+    res.status(201).json(post.comments);
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+});
+
+// @route    Delete api/posts/comment/:id/:comment_id
+// @desc     Delete a comment
+// @access   TBD
+
+router.delete('/comment/:id/:comment_id', async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    // Pull out comment
+    const comment = post.comments.find(
+      (comment) => comment.id === req.params.comment_id
+    );
+    //Make sure comment exist
+    if (!comment) {
+      return res.status(404).json({ msg: 'Comment does not exist' });
+    }
+    post.comments = post.comments.filter(
+      ({ id }) => id !== req.params.comment_id
+    );
+
+    await post.save();
+
+    return res.json(post.comments);
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+});
+
 module.exports = router;
