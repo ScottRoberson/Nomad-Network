@@ -8,6 +8,14 @@ const postSchema = new mongoose.Schema({
   postImage: {
     type: String,
   },
+  comments: [
+    {
+      text: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   created: { type: Date, default: Date.now },
 });
 
