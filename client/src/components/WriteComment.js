@@ -1,10 +1,23 @@
 import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
+import { addComment } from '../redux/actions/postActions';
 import Avatar from '@material-ui/core/Avatar';
 import './WriteComment.css';
 
-const WriteComment = () => {
+const WriteComment = ({ postId }) => {
+  const [comment, setComment] = useState('');
+  const dispatch = useDispatch();
+
+  const commentChangeHandler = (e) => {
+    setComment(e.target.value);
+  };
+
+  const commentSubmit = (e, postId) => {
+    e.preventDefault();
+    console.log('Submit comment', comment);
+    dispatch(addComment(postId, comment));
+  };
+
   return (
     <div className='write-comment-main-container'>
       <Avatar
@@ -12,22 +25,17 @@ const WriteComment = () => {
         alt='Random'
         src='https://randomuser.me/api/portraits/men/81.jpg'
       />
-      <form className='write-comment-form'>
+      <form
+        className='write-comment-form'
+        onSubmit={(e) => commentSubmit(e, postId)}>
         <div className='write-comment-input-container'>
           <input
             type='text'
             className='comment-input'
             placeholder='Write a comment..'
+            onChange={commentChangeHandler}
           />
-        </div>
-        <div className='image-upload-container'>
-          <input type='file' name='file' id='file' className='inputfile' />
-          <label for='file'>
-            <FontAwesomeIcon
-              icon={faCamera}
-              style={{ fontSize: '24px', color: '#385898' }}
-            />
-          </label>
+          <button>Add</button>
         </div>
       </form>
     </div>

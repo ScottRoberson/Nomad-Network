@@ -5,8 +5,8 @@ import {
   DELETE_POST,
   OPEN_EDIT_MODAL,
   UPDATE_POST,
+  ADD_COMMENT,
 } from './types';
-import axios from 'axios';
 
 export const getPosts = () => (dispatch) => {
   dispatch(setPostLoading());
@@ -39,6 +39,25 @@ export const addPost = (post) => (dispatch) => {
         payload: data,
       })
     );
+};
+
+export const addComment = (postId, comment) => (dispatch) => {
+  fetch(`api/posts/comment/${postId}`, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({ text: comment }),
+  })
+    .then((res) => res.json())
+    .then((data) =>
+      dispatch({
+        type: ADD_COMMENT,
+        payload: data,
+      })
+    );
+  console.log(comment, postId);
 };
 
 export const deletePost = (id) => (dispatch) => {
