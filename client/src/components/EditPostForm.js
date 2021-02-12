@@ -34,7 +34,6 @@ const EditPostForm = ({ open, setOpen, id }) => {
   const [preview, setPreview] = useState();
   const editPost = useSelector((state) => state.post.postToEdit);
   const dispatch = useDispatch();
-  const [showPostImage, setShowPostImage] = useState(true);
   const imageContainer = useRef(null);
   const classes = useStyles();
 

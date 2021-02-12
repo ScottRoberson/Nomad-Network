@@ -1,7 +1,9 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
+import { useSelector } from 'react-redux';
+
 import './PostComments.css';
-const PostComments = () => {
+const PostComments = ({ comments }) => {
   return (
     <div className='post-comment-main-container'>
       <Avatar
@@ -13,14 +15,13 @@ const PostComments = () => {
         <div className='username-container'>
           <span className='username'> Peter Griffin </span>
         </div>
-        <div className='comment-text-container'>
-          <p className='comment-text'>
-            Letterpress plaid pok pok butcher meggings. Paleo celiac
-            lumbersexual, forage PBR&B prism chartreuse pok pok yr iceland
-            whatever organic. Migas selvage pork belly bitters hella. Before
-            they sold out literally artisan activated charcoal sartorial chia.
-          </p>
-        </div>
+        {comments.map((comment) => {
+          return (
+            <div className='comment-text-container' key={comment._id}>
+              <p className='comment-text'>{comment.text}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

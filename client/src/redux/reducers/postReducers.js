@@ -5,10 +5,11 @@ import {
   DELETE_POST,
   UPDATE_POST,
   OPEN_EDIT_MODAL,
+  ADD_COMMENT,
 } from '../actions/types';
 
 const initialState = {
-  posts: [],
+  posts: [{ comments: [] }],
   loading: false,
   openEditForm: false,
   postToEdit: {},
@@ -48,6 +49,20 @@ const post = (state = initialState, action) => {
           }
         }),
       };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        posts: [
+          ...state.posts.map((post) => {
+            if (post.id !== action.payload.id) {
+              return post;
+            } else {
+              return { ...post, comments: [...post.comments, action.payload] };
+            }
+          }),
+        ],
+      };
+
     case OPEN_EDIT_MODAL:
       return {
         ...state,

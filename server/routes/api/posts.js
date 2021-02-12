@@ -103,6 +103,7 @@ router.patch('/:id', upload.single('postImage'), async (req, res) => {
 router.post('/comment/:id', async (req, res) => {
   const { id } = req.params;
   const { text } = req.body;
+  console.log(req.body);
   try {
     const post = await Post.findById(id);
     if (!post) {

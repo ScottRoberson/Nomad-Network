@@ -20,7 +20,7 @@ function Post({ posts }) {
               <img className='post-image' src={post.postImage} alt='' />
             </div>
           </div>
-          <CommentBox />
+          <CommentBox postId={post._id} comments={post.comments} />
         </div>
       </div>
     );

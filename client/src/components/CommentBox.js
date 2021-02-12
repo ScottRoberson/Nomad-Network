@@ -6,7 +6,7 @@ import './Post.css';
 import WriteComment from './WriteComment';
 import PostComments from './PostComments';
 
-const CommentBox = () => {
+const CommentBox = ({ postId, comments }) => {
   return (
     <div className='comment-container'>
       <div className='like-comment-count-container'>
@@ -38,8 +38,8 @@ const CommentBox = () => {
         </div>
       </div>
       {/* Write Comment & Post Comments below */}
-      <WriteComment />
-      <PostComments />
+      <WriteComment postId={postId} />
+      <PostComments comments={comments} />
     </div>
   );
 };
