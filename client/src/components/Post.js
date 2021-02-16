@@ -15,7 +15,7 @@ function Post({ posts }) {
             <PostActionDialog id={post._id} post={post} />
           </div>
           <div className='post'>
-            <p>{post.postText}</p>
+            <p className='post-text'>{post.postText}</p>
             <div className='post-image-container'>
               <img className='post-image' src={post.postImage} alt='' />
             </div>

@@ -25,19 +25,19 @@ const WriteComment = ({ postId }) => {
         alt='Random'
         src='https://randomuser.me/api/portraits/men/81.jpg'
       />
-      <form
-        className='write-comment-form'
-        onSubmit={(e) => commentSubmit(e, postId)}>
-        <div className='write-comment-input-container'>
+      <div className='write-comment-input-container'>
+        <form
+          className='write-comment-form'
+          onSubmit={(e) => commentSubmit(e, postId)}>
           <input
             type='text'
             className='comment-input'
             placeholder='Write a comment..'
             onChange={commentChangeHandler}
           />
-          <button>Add</button>
-        </div>
-      </form>
+          <button className='add-comment-btn'>Add</button>
+        </form>
+      </div>
     </div>
   );
 };

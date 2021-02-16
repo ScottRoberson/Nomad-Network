@@ -1,17 +1,15 @@
-.post-parent {
+/* .post-parent {
   padding: 10px 0;
-}
+} */
 
 .post-wrapper {
   margin-bottom: 20px;
   background-color: var(--stormShadow);
   position: relative;
+  padding: 12px;
 }
 
-.post {
-  padding: 15px;
-}
-.post p {
+.post-text {
   display: flex;
   text-align: justify;
   padding: 10px;
