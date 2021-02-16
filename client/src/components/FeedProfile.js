@@ -5,7 +5,7 @@ import lucky from '../images/Lucky.jpg';
 
 const FeedProfile = () => {
   return (
-    <div className='test-name'>
+    <div className='user-info-main'>
       <Avatar alt='lucky Sob' src={lucky} />
       <div className='name'>
         <p className='post__name'>Peter Griffin</p>

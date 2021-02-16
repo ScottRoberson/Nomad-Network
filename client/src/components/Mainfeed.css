@@ -5,9 +5,9 @@
 .name p {
   font-weight: bold;
 }
-.test-name {
+.user-info-main {
   display: flex;
   align-items: center;
   height: 50px;
-  padding: 12px 16px;
+  padding: 10px;
 }

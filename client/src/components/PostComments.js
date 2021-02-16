@@ -1,30 +1,20 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import { useSelector } from 'react-redux';
-
+import FeedProfile from './FeedProfile';
 import './PostComments.css';
 const PostComments = ({ comments }) => {
-  return (
-    <div className='post-comment-main-container'>
-      <Avatar
-        style={{ height: '32px', width: '32px' }}
-        alt='Random'
-        src='https://randomuser.me/api/portraits/men/81.jpg'
-      />
+  const commentlist = comments.map((comment) => {
+    return (
       <div className='post-comments'>
-        <div className='username-container'>
-          <span className='username'> Peter Griffin </span>
+        <FeedProfile />
+        <div className='comment-text-container' key={comment._id}>
+          <p className='comment-text'>{comment.text}</p>
         </div>
-        {comments.map((comment) => {
-          return (
-            <div className='comment-text-container' key={comment._id}>
-              <p className='comment-text'>{comment.text}</p>
-            </div>
-          );
-        })}
       </div>
-    </div>
-  );
+    );
+  });
+
+  return <div className='post-comment-main-container'>{commentlist}</div>;
 };
 
 export default PostComments;
