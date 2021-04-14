@@ -38,6 +38,12 @@ const PostComments = ({ comments }) => {
   const handleClickOpen = () => {
     setOpen(true);
   };
+
+  const handleDelete = (id) => {
+    console.log(id);
+  };
+
+  console.log(comments);
   const commentlist = comments.map((comment) => {
     return (
       <div className='post-comments'>
@@ -47,7 +53,9 @@ const PostComments = ({ comments }) => {
           </Button>
           <Dialog open={open}>
             <List className={classes.list}>
-              <ListItem className={classes.listItem}>
+              <ListItem
+                className={classes.listItem}
+                onClick={() => handleDelete(comment._id)}>
                 <Avatar className={classes.avatar}>
                   <DeleteIcon />
                 </Avatar>

@@ -6,6 +6,7 @@ import {
   UPDATE_POST,
   OPEN_EDIT_MODAL,
   ADD_COMMENT,
+  DELETE_COMMENT,
 } from '../actions/types';
 
 const initialState = {
@@ -61,6 +62,10 @@ const post = (state = initialState, action) => {
             }
           }),
         ],
+      };
+    case DELETE_COMMENT:
+      return {
+        posts: state.posts.filter((post) => post._id !== action.payload),
       };
 
     case OPEN_EDIT_MODAL:

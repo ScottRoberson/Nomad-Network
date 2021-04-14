@@ -6,6 +6,7 @@ import {
   OPEN_EDIT_MODAL,
   UPDATE_POST,
   ADD_COMMENT,
+  DELETE_COMMENT,
 } from './types';
 
 export const getPosts = () => (dispatch) => {
@@ -57,7 +58,19 @@ export const addComment = (postId, comment) => (dispatch) => {
         payload: data,
       })
     );
-  console.log(comment, postId);
+};
+
+export const deleteComment = (id) => (dispatch) => {
+  fetch(`api/posts/comment/${id}`, {
+    method: 'DELETE',
+  })
+    .then((res) => res.json())
+    .then((id) =>
+      dispatch({
+        type: DELETE_COMMENT,
+        payload: id,
+      })
+    );
 };
 
 export const deletePost = (id) => (dispatch) => {
