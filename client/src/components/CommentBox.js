@@ -39,7 +39,7 @@ const CommentBox = ({ postId, comments }) => {
       </div>
       {/* Write Comment & Post Comments below */}
       <WriteComment postId={postId} />
-      <PostComments comments={comments} />
+      <PostComments comments={comments} postId={postId} />
     </div>
   );
 };

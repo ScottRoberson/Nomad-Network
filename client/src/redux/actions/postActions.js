@@ -60,15 +60,15 @@ export const addComment = (postId, comment) => (dispatch) => {
     );
 };
 
-export const deleteComment = (id) => (dispatch) => {
-  fetch(`api/posts/comment/${id}`, {
+export const deleteComment = (postId, commentId) => (dispatch) => {
+  fetch(`api/posts/comment/${postId}/${commentId}`, {
     method: 'DELETE',
   })
     .then((res) => res.json())
     .then((id) =>
       dispatch({
         type: DELETE_COMMENT,
-        payload: id,
+        payload: commentId,
       })
     );
 };

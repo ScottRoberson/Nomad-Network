@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
+import { useDispatch } from 'react-redux';
+import { deleteComment } from '../redux/actions/postActions';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { makeStyles } from '@material-ui/core/styles';
 import { blue } from '@material-ui/core/colors';
@@ -31,19 +33,19 @@ const useStyles = makeStyles({
   },
 });
 
-const PostComments = ({ comments }) => {
+const PostComments = ({ comments, postId }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-
+  const dispatch = useDispatch();
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleDelete = (id) => {
-    console.log(id);
+  const handleDelete = (postId, commentId) => {
+    dispatch(deleteComment(postId, commentId));
+    setOpen(false);
+    console.log(postId, commentId);
   };
-
-  console.log(comments);
   const commentlist = comments.map((comment) => {
     return (
       <div className='post-comments'>
@@ -55,7 +57,7 @@ const PostComments = ({ comments }) => {
             <List className={classes.list}>
               <ListItem
                 className={classes.listItem}
-                onClick={() => handleDelete(comment._id)}>
+                onClick={() => handleDelete(postId, comment._id)}>
                 <Avatar className={classes.avatar}>
                   <DeleteIcon />
                 </Avatar>
