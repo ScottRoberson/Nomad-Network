@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   },
 });
 
-const PostComments = ({ comments, postId }) => {
+const PostComments = ({ comments, postId, openComment }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
@@ -44,11 +44,10 @@ const PostComments = ({ comments, postId }) => {
   const handleDelete = (postId, commentId) => {
     dispatch(deleteComment(postId, commentId));
     setOpen(false);
-    console.log(postId, commentId);
   };
   const commentlist = comments.map((comment) => {
     return (
-      <div className='post-comments'>
+      <div className={openComment ? 'post-comments' : 'comment-hide'}>
         <div className='more-container'>
           <Button onClick={handleClickOpen}>
             <MoreHorizIcon />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { faCommentAlt } from '@fortawesome/free-regular-svg-icons';
@@ -7,6 +7,11 @@ import WriteComment from './WriteComment';
 import PostComments from './PostComments';
 
 const CommentBox = ({ postId, comments }) => {
+  const [openComment, setOpenComment] = useState(false);
+
+  const handleCommentToggle = () => {
+    setOpenComment((openComment) => !openComment);
+  };
   return (
     <div className='comment-container'>
       <div className='like-comment-count-container'>
@@ -15,9 +20,15 @@ const CommentBox = ({ postId, comments }) => {
         </div>
         <div className='comments'>
           <span>
-            <a href='#' className='comment-link'>
-              <span>
-                <span> 1 Comment</span>
+            <a href='#' onClick={handleCommentToggle} className='comment-link'>
+              <span
+                style={
+                  comments.length > 0
+                    ? { display: 'block' }
+                    : { display: 'none' }
+                }>
+                {comments.length}{' '}
+                <span>{comments.length === 1 ? 'Comment' : 'Comments'}</span>
               </span>
             </a>
           </span>
@@ -39,7 +50,11 @@ const CommentBox = ({ postId, comments }) => {
       </div>
       {/* Write Comment & Post Comments below */}
       <WriteComment postId={postId} />
-      <PostComments comments={comments} postId={postId} />
+      <PostComments
+        comments={comments}
+        openComment={openComment}
+        postId={postId}
+      />
     </div>
   );
 };
